@@ -9,16 +9,14 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <!-- Added Google Font -->
     <style>
-      /* Page Styling */
       body {
-        background-image: url("profilepic.jpg");
-        background-size: cover; /* Makes the image cover the entire screen */
-        background-position: center; /* Centers the image */
-        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-image: url("background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         background-color: #111;
-        font-family: "Poppins", sans-serif; /* Applied Google font */
+        font-family: "Poppins", sans-serif;
         text-align: center;
         color: white;
         margin: 0;
@@ -31,72 +29,61 @@
         animation: fadeIn 1.5s ease-in-out;
       }
       .pfp {
-        max-width: 200px;
-        border-radius: 50%; /* Changed to make it perfectly round */
-        border: 4px solid #fff; /* Added border around the profile picture */
-        margin-bottom: 20px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid white;
+        margin-bottom: 15px;
       }
-
       h1 {
-        color: #ffffff;
-        font-size: 36px;
-        letter-spacing: 2px;
+        font-size: 28px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
-        animation: slideIn 1.5s ease-in-out;
         margin: 10px 0;
       }
-
-      p {
-        color: white;
-        font-size: 18px;
-        margin: 5px 0;
-        transition: color 0.3s ease-in-out;
-      }
-
-      p:hover {
-        color: purple; /* Added hover effect for text */
-      }
-
       .info {
-        max-width: 600px;
-        margin: 20px 0;
-        animation: slideIn 1.5s ease-in-out;
-        background-color: rgba(
-          0,
-          0,
-          0,
-          0.6
-        ); /* Darker overlay for readability */
+        background-color: rgba(0, 0, 0, 0.6);
         border-radius: 8px;
-        padding: 20px;
-        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-        color: white;
+        padding: 10px 20px;
+        display: inline-block;
+        font-size: 16px;
       }
-
-      /* Button Styling */
+      .buttons {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Ensures two columns */
+        gap: 10px; /* Adds space between buttons */
+        justify-content: center; /* Centers the grid */
+        max-width: 500px;
+      }
       .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 200px;
         background: white;
         border: none;
         color: black;
-        padding: 15px 40px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 18px;
+        padding: 12px;
+        font-size: 16px;
         font-weight: bold;
-        margin-top: 20px;
         cursor: pointer;
+        border: 2px solid black;
         border-radius: 50px;
-        transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
-        box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease-in-out;
       }
-
+      .button img {
+        width: 20px;
+        height: 20px;
+      }
       .button:hover {
-        background: linear-gradient(45deg, #000000, #ffffff);
-        transform: scale(1.1);
-        box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.2);
+        border: 2px solid whitesmoke;
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+        color: white;
+        box-shadow: 0px 6px 15px rgba(106, 17, 203, 0.5);
       }
-
-      /* Animations */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -105,35 +92,14 @@
           opacity: 1;
         }
       }
-
-      @keyframes slideIn {
-        from {
-          transform: translateY(-50px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      /* Responsive Design */
-      @media screen and (max-width: 768px) {
-        h1 {
-          font-size: 28px;
-        }
-
-        p {
-          font-size: 16px;
-        }
-
+      @media screen and (max-width: 600px) {
         .button {
-          padding: 12px 30px;
-          font-size: 16px;
+          width: 180px;
+          font-size: 14px;
+          padding: 10px;
         }
-
-        .pfp {
-          max-width: 150px;
+        .buttons {
+          grid-template-columns: 1fr; /* Switch to 1 column */
         }
       }
     </style>
@@ -141,16 +107,42 @@
   <body>
     <img class="pfp" src="pfp.jpg" alt="Muhammadsharif's profile picture" />
     <h1>Muhammadsharif Odilov</h1>
-    <div class="info">
-      <p>My name is Muhammadsharif</p>
-      <p>My age is 19</p>
-      <p>My height is 1.80</p>
-      <p>My weight is 70kg</p>
-      <p>My favorite animal is horse</p>
-      <p>My favorite movie is The Avengers</p>
+    <div class="info">Age: 19<br />Student at FSU</div>
+    <div class="buttons">
+      <a
+        href="https://t.me/Muhammadsharif_Odilov"
+        target="_blank"
+        class="button"
+      >
+        <img src="svgs/icons8-telegram.svg" alt="Telegram" /> Telegram
+      </a>
+      <a href="https://instagram.com" target="_blank" class="button">
+        <img src="svgs/icons8-instagram.svg" alt="Instagram" /> Instagram
+      </a>
+      <a
+        href="https://www.chess.com/member/Muhammadsharif_Odilov"
+        target="_blank"
+        class="button"
+      >
+        <img src="svgs/chess-pieces-svgrepo-com.svg" alt="Chess" /> Chess.com
+      </a>
+      <a href="https://pinterest.com" target="_blank" class="button">
+        <img src="svgs/icons8-pinterest.svg" alt="Pinterest" /> Pinterest
+      </a>
+      <a
+        href="https://www.duolingo.com/profile/Muhammadsharif06?via=share_profile_link"
+        target="_blank"
+        class="button"
+      >
+        <img src="svgs/icons8-duolingo-logo.svg" alt="Duolingo" /> Duolingo
+      </a>
+      <a
+        href="mailto:Muhammadsharifodilov119@gmail.com"
+        target="_blank"
+        class="button"
+      >
+        <img src="svgs/icons8-gmail.svg" alt="Email" /> Email Me
+      </a>
     </div>
-    <a href="https://t.me/Muhammadsharif_Odilov" target="_blank">
-      <button class="button">Contact Me on Telegram</button>
-    </a>
   </body>
 </html>
