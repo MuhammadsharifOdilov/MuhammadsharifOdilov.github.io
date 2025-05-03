@@ -3,87 +3,481 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muhammadsharif Official</title>
-    <link rel="icon" href="favicon.ico" />
+    <title>Arcane - Ultimate Stylish Site</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;500;700&display=swap"
       rel="stylesheet"
     />
     <style>
-      body {
-        background-image: url("background.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-color: #111;
-        font-family: "Poppins", sans-serif;
-        text-align: center;
-        color: white;
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #3a0ca3, #7209b7, #4361ee);
+        background-size: 400% 400%;
+        animation: bgShift 3s ease infinite;
+        color: #ffffff;
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: radial-gradient(
+            circle at 10% 20%,
+            rgba(255, 255, 255, 0.06),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.05),
+            transparent 50%
+          );
+        z-index: 0;
+      }
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 1s ease, visibility 1s ease;
+      }
+
+      .loader-logo span {
+        font-size: 60px;
+        font-weight: 700;
+        color: white;
+        animation: bounceGlow 1.5s infinite ease-in-out, fadeIn 2s ease-in-out;
+        text-shadow: 0 0 20px rgba(255,255,255,0.5);
+      }
+
+      @keyframes bounceGlow {
+        0%, 100% {
+          transform: translateY(0) scale(1);
+          text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        50% {
+          transform: translateY(-15px) scale(1.1);
+          text-shadow: 0 0 30px rgba(255,255,255,0.8);
+        }
+      }
+
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+
+      #loader.fade-out {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .hero-header {
+        display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        animation: fadeIn 1.5s ease-in-out;
+        padding: 60px 20px 40px;
+        position: relative;
+        z-index: 2;
+      }
+      .main-title {
+        font-family: "Orbitron", sans-serif;
+        font-size: 3.5rem;
+        text-align: center;
+        padding: 20px 40px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        background-image: linear-gradient(
+          90deg,
+          #ffffff,
+          #dcdcff,
+          #8ab4f8,
+          #dcdcff,
+          #ffffff
+        );
+        background-size: 300% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: glowflow 6s ease infinite;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
+        position: relative;
+      }
+      @keyframes glowflow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .main-title::after {
+        content: "";
+        position: absolute;
+        bottom: 8px;
+        left: 25%;
+        width: 50%;
+        height: 3px;
+        background: linear-gradient(90deg, #a78bfa, #f687b3);
+        border-radius: 1px;
+        opacity: 0.4;
+        animation: underlineGlow 3s infinite alternate ease-in-out;
+      }
+      @keyframes underlineGlow {
+        0% {
+          transform: scaleX(1);
+          opacity: 0.3;
+        }
+        100% {
+          transform: scaleX(1.2);
+          opacity: 0.9;
+        }
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 40px;
+        padding-bottom: 60px;
+        position: relative;
+        z-index: 2;
       }
       .pfp {
-        width: 150px;
-        height: 150px;
+        max-width: 320px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+      .pfp:hover {
+        transform: rotateY(8deg) rotateX(5deg);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      }
+      .pfp img {
+        border-radius: 16px;
+        max-width: 100%;
+        margin-bottom: 16px;
+        
+        border: 3px solid rgb(234, 233, 233);
+        object-fit: cover;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        animation: popIn 1s ease-out, glowPulse 3s infinite;
+        position: relative;
+        z-index: 1;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes glowPulse {
+        0%,
+        100% {
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+      }      
+      
+      .pfp h2 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .pfp p {
+        font-weight: 300;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.85);
+        text-align: center;
+      }
+      /* Flicker text style */
+      .flicker-text {
+        animation: flicker 2s infinite;
+      }
+      @keyframes flicker {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        45% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 0.2;
+        }
+        55% {
+          opacity: 0.4;
+        }
+      }
+
+      /* Cursor trail effect */
+      .cursor-trail {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: white;
         border-radius: 50%;
-        border: 4px solid white;
-        margin-bottom: 15px;
+        pointer-events: none;
+        opacity: 0.8;
+        animation: fadeOut 0.5s forwards;
+        z-index: 1000;
       }
-      h1 {
-        font-size: 28px;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        margin: 10px 0;
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          transform: scale(0.5);
+        }
       }
-      .info {
-        background-color: rgba(0, 0, 0, 0.6);
-        border-radius: 8px;
+
+      /* Quote display */
+      #quote {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.2rem;
+        padding: 12px 20px;
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(4px);
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+        color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Hidden easter egg effect */
+      .pfp:hover .easter-egg {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .easter-egg {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.5s ease;
+        font-size: 0.9rem;
+        color: #fcd34d;
+        text-shadow: 0 0 6px #facc15;
+        text-align: center;
+        margin-top: 10px;
+      }
+      .quote-display-section {
+        min-height: 5.5em;
+        padding: 0 20px;
+        margin-top: -30px; /* Moves quote closer to profile */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 2;
+        position: relative;
+      }
+
+      .animated-quote-container {
+        
+        max-width: 800px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 24px 32px;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        max-width: 100%;
         padding: 10px 20px;
-        display: inline-block;
-        font-size: 16px;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      .smooth-typing {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.4rem;
+        color: #ffffff;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+        border-right: none;
+        transition: opacity 0.6s ease;
+        opacity: 1;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+
+        color: #ffffff;
+        text-align: center;
+        padding: 12px 20px;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.9rem;
+        backdrop-filter: blur(4px);
+        border-radius: 5px 5px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.25);
+        z-index: 3;
+      }
+
+      footer a {
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      footer a:hover {
+        color: lightblue;
       }
       .buttons {
-        margin-top: 20px;
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Ensures two columns */
-        gap: 10px; /* Adds space between buttons */
-        justify-content: center; /* Centers the grid */
-        max-width: 500px;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+        max-width: 90vh;
+        margin-top: 25px;
+        animation: fadeInUp 1.5s ease-in-out;
+        padding: 0 10px;
       }
+
       .button {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        width: 200px;
-        background: white;
-        border: none;
+        background: rgba(255, 255, 255, 0.9);
         color: black;
-        padding: 12px;
-        font-size: 16px;
+        padding: 12px 16px;
+        border-radius: 40px;
         font-weight: bold;
-        cursor: pointer;
-        border: 2px solid black;
-        border-radius: 50px;
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+        font-size: 15px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        position: relative;
+        overflow: hidden;
+        animation: pulse 2.5s infinite;
       }
+
+      .button:hover::after {
+        content: "";
+        position: absolute;
+        width: 120%;
+        height: 100%;
+        background: radial-gradient(circle, #ffffff44, transparent);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+        animation: trailFade 0.6s ease-out forwards;
+      }
+
+      @keyframes trailFade {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0.6;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      .button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: skewX(-45deg);
+        transition: left 0.5s;
+      }
+
+      .button:hover::before {
+        left: 100%;
+      }
+
+      .button:hover {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(106, 17, 203, 0.5);
+        border-color: #fff;
+      }
+
       .button img {
         width: 20px;
         height: 20px;
       }
-      .button:hover {
-        border: 2px solid whitesmoke;
-        background: linear-gradient(45deg, #6a11cb, #2575fc);
-        color: white;
-        box-shadow: 0px 6px 15px rgba(106, 17, 203, 0.5);
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        padding: 0 10px;
+}
+@keyframes bgShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
+
+      .button {
+        flex: 1 1 120px;
+        max-width: 220px;
+      }
+      @media (max-width: 440px) {
+        .button {
+          flex: 1 1 100%;
+        }
+      }
+
+
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -92,64 +486,253 @@
           opacity: 1;
         }
       }
-      @media screen and (max-width: 600px) {
-        .button {
-          width: 180px;
-          font-size: 14px;
-          padding: 10px;
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
         }
-        .buttons {
-          grid-template-columns: 1fr; /* Switch to 1 column */
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes popIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
         }
       }
     </style>
   </head>
   <body>
-    <img class="pfp" src="pfp.jpg" alt="Muhammadsharif's profile picture" />
-    <h1>Muhammadsharif Odilov</h1>
-    <div class="info">Age: 19<br />Student at FSU</div>
-    <div class="buttons">
-      <a
-        href="https://t.me/Muhammadsharif_Odilov"
-        target="_blank"
-        class="button"
-      >
-        <img src="svgs/icons8-telegram.svg" alt="Telegram" /> Telegram
-      </a>
-      <a href="https://www.instagram.com/muhammadsharif_006?igsh=MW1kbnZlbHlwemEydQ==" target="_blank" class="button">
-        <img src="svgs/icons8-instagram.svg" alt="Instagram" /> Instagram
-      </a>
-      <a
-        href="https://www.chess.com/member/Muhammadsharif_Odilov"
-        target="_blank"
-        class="button"
-      >
-        <img src="svgs/chess-pieces-svgrepo-com.svg" alt="Chess" /> Chess.com
-      </a>
-      <a href="https://pin.it/5Kral7K8r" target="_blank" class="button">
-        <img src="svgs/icons8-pinterest.svg" alt="Pinterest" /> Pinterest
-      </a>
-      <a
-        href="https://www.duolingo.com/profile/Muhammadsharif06?via=share_profile_link"
-        target="_blank"
-        class="button"
-      >
-        <img src="svgs/icons8-duolingo-logo.svg" alt="Duolingo" /> Duolingo
-      </a>
-      <a
-        href="mailto:Muhammadsharifodilov119@gmail.com"
-        target="_blank"
-        class="button"
-      >
-        <img src="svgs/icons8-gmail.svg" alt="Email" /> Email Me
-      </a>
-      <a
-        href="https://www.facebook.com/share/1FYvyNJC9g/?mibextid=qi2Omg"
-        target="_blank"
-        class="button"
-      >
-        <img src="svgs/facebook.svg" alt="Email" /> Facebook
-      </a>
-    </div>
+    <div id="loader">
+      <div class="loader-logo">
+        <span>M</span>
+      </div>
+    </div>    
+    <canvas class="particles"></canvas>
+    <header class="hero-header">
+      <h1 class="main-title">Muhammadsharif Odilov</h1>
+    </header>
+    <main>
+      <div class="pfp">
+        <img src="pfp.jpg" alt="Jinx" />
+        <p>
+          Currently studying at <strong>Fergana State University.</strong>
+          <p>20 years old.</p><br />
+        </p>
+        <div class="easter-egg">"Even stars must collapse before they shine their brightest."</div>
+      </div>
+      <div class="easter-egg">"In the chaos, I found myself."</div>
+      <section class="quote-display-section">
+        <div class="animated-quote-container">
+          <p id="animatedQuote" class="styled-typewriter smooth-typing"></p>
+        </div>
+      </section>
+      <div class="buttons">
+        <a
+          href="https://t.me/Muhammadsharif_Odilov"
+          target="_blank"
+          class="button"
+          data-tilt
+        >
+          <img src="svgs/icons8-telegram.svg" alt="Telegram" /> Telegram
+        </a>
+        <a
+          href="https://www.instagram.com/muhammadsharif_006"
+          target="_blank"
+          class="button"
+          data-tilt
+        >
+          <img src="svgs/icons8-instagram.svg" alt="Instagram" /> Instagram
+        </a>
+        <a
+          href="https://www.chess.com/member/Muhammadsharif_Odilov"
+          target="_blank"
+          class="button"
+          data-tilt
+        >
+          <img src="svgs/chess-pieces-svgrepo-com.svg" alt="Chess.com" />
+          Chess.com
+        </a>
+        <a
+          href="https://pin.it/5Kral7K8r"
+          target="_blank"
+          class="button"
+          data-tilt
+        >
+          <img src="svgs/icons8-pinterest.svg" alt="Pinterest" /> Pinterest
+        </a>
+        <a
+          href="https://www.duolingo.com/profile/Muhammadsharif06"
+          target="_blank"
+          class="button"
+          data-tilt
+        >
+          <img src="svgs/icons8-duolingo-logo.svg" alt="Duolingo" /> Duolingo
+        </a>
+        <a
+          href="mailto:Muhammadsharifodilov119@gmail.com"
+          class="button"
+          data-tilt
+        >
+          <img src="svgs/icons8-gmail.svg" alt="Email" /> Email Me
+        </a>
+        <a
+          href="https://www.facebook.com/share/1FYvyNJC9g"
+          target="_blank"
+          class="button"
+          data-tilt
+        >
+          <img src="svgs/facebook.svg" alt="Facebook" /> Facebook
+        </a>
+      </div>
+      <footer>
+        <p>Built by <a href="https://t.me/Clem_404" target="_blank">Clem</a></p>
+      </footer>
+    </main>
+
+    <script>
+      // Particle sparkle effect
+      const canvas = document.querySelector(".particles");
+      const ctx = canvas.getContext("2d");
+      let w = (canvas.width = window.innerWidth);
+      let h = (canvas.height = window.innerHeight);
+      const particles = [];
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: Math.random() * 2,
+          d: Math.random() * 10,
+        });
+      }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        particles.forEach((p) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        update();
+      }
+      function update() {
+        particles.forEach((p) => {
+          p.y += Math.cos(p.d) + 0.5;
+          p.x += Math.sin(p.d);
+          if (p.y > h) {
+            p.y = 0;
+            p.x = Math.random() * w;
+          }
+        });
+      }
+      function loop() {
+        draw();
+        requestAnimationFrame(loop);
+      }
+      loop();
+      window.addEventListener("resize", () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+      // Cursor Trail
+      const trail = [];
+      document.addEventListener("mousemove", (e) => {
+        const dot = document.createElement("div");
+        dot.className = "cursor-trail";
+        dot.style.left = `${e.pageX}px`;
+        dot.style.top = `${e.pageY}px`;
+        document.body.appendChild(dot);
+        trail.push(dot);
+        if (trail.length > 25) {
+          const old = trail.shift();
+          old.remove();
+        }
+      });
+
+      // Parallax scroll effect for .pfp
+      window.addEventListener("scroll", () => {
+        const card = document.querySelector(".pfp");
+        if (card) {
+          card.style.transform = `translateY(${
+            window.scrollY * 0.05
+          }px) rotateY(8deg) rotateX(5deg)`;
+        }
+      });
+            const styledQuotes = [
+        "The past lingers, but it doesn’t write your ending.",
+        "True power is mastering the storm, not silencing it.",
+        "Broken is not the same as defeated.",
+        "Sanity is a privilege for those untouched by fire.",
+        "Even stars must collapse before they shine their brightest.",
+        "Your story is unfinished — and that's your strength.",
+        "The world fears what it cannot name or cage.",
+        "Brilliance often walks hand in hand with madness.",
+        "You don’t survive the storm — you become it.",
+        
+        "Some feelings can only be folded into pages and left for silence to understand.",
+        "The right words don’t just speak — they echo.",
+        "Poetry is not the escape from reality, but the deeper entry into it.",
+        "A good book doesn’t end — it settles inside you, rearranging things.",
+        "There are entire worlds tucked between two sentences.",
+        "I write not to escape life, but to taste it twice.",
+        "The beauty of words is that they bloom long after they're read.",
+        "Even silence is a kind of language, if you know how to listen.",
+        "Some stories don’t ask to be told — they insist.",
+        "There’s a sacred weight to well-chosen words.",
+        "Not all treasures are gold — some are written in ink and bound in quiet.",
+        "A poem doesn’t always answer — it listens.",
+        "You are a library made of memories, each chapter still unfolding.",
+        "Sometimes a single line can carry the gravity of a lifetime.",
+        "To read deeply is to love without touching.",
+
+        // 5 new ones
+        "To feel deeply is both a gift and a burden — but always a sign of being fully alive.",
+        "Every sentence I write is a doorway to a version of myself I haven't met yet.",
+        "The soul speaks in metaphors when the heart grows quiet.",
+        "Real stories don't end — they echo differently each time they're read.",
+        "Ink remembers what the heart dares not say aloud.",
+      ];
+
+
+      let quoteIndex = 0;
+      const quoteEl = document.getElementById("animatedQuote");
+
+      function typeSmoothQuote(text, i = 0) {
+        if (i === 0) quoteEl.innerText = ""; // Clear before typing
+
+        if (i < text.length) {
+          quoteEl.textContent += text.charAt(i);
+
+          setTimeout(() => typeSmoothQuote(text, i + 1), 45);
+        } else {
+          setTimeout(() => {
+            quoteEl.style.opacity = 0;
+            setTimeout(() => {
+              quoteIndex = (quoteIndex + 1) % styledQuotes.length;
+              quoteEl.style.opacity = 1;
+              typeSmoothQuote(styledQuotes[quoteIndex]);
+            }, 800); // Time before typing next quote
+          }, 3000); // Time quote stays after fully typed
+        }
+      }
+
+      typeSmoothQuote(styledQuotes[quoteIndex]);
+      //loader
+      
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => {
+        loader.classList.add("fade-out");
+      }, 2000); // Stay visible for 2 seconds
+    });
+    </script>
   </body>
 </html>
